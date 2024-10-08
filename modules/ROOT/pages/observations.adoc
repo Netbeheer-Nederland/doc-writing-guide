@@ -1,0 +1,17 @@
+= Rules
+
+* All xrefs must use Antora's resource ID coordinate system in order to be guaranteed that the system functions properly.
+** This means: no use of (relative) file paths.
+** The motivation for this can be found https://antora.zulipchat.com/#narrow/stream/282400-users/topic/Local.20references.20compatible.20with.20both.20Antora.20and.20AsciiDoctor[here].
+* Generation of PDFs is currently out of scope.
+** Nonetheless, it is encouraged to write AsciiDoc in a style that emphasizes agnosticism towards the output format.
+*** For example, using HTML-only macros such as `link` is discouraged.
+** On the other hand, be pragmatic when keeping up this style of writing requires too much effort or complication.
+* Try to use as little extensions as possible.
+** This improves compatibility with other tooling and output formats.
+* When using the `asciidoctor-diagram` or `asciidoctor-kroki` extensions for writing diagrams, avoid using the custom macro.
+** Prefer includes of partial files that contain the diagram code.
+** Inline diagram code is also fine, but be mindful of readability and the ability to reuse.
+
+== PDF generation
+At some point we would like to convert (parts of) our documentation to PDF, ideally from a single source of AsciiDoc files.

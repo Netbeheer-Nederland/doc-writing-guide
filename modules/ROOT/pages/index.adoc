@@ -1,3 +1,27 @@
-= Project Name
+= Writing Guide
+:lnk-alliander: https://www.alliander.com/[Alliander]
 
-You're writing goes here.
+Jump to <<#dfn-conceptual-model,Conceptual model>>, or to <<#dfn-logical-model>>.
+
+****
+[.right]
+image:ROOT::image$nbnl_logo.svg[]
+
+Version:: v0.1-alpha
+Status:: Draft
+Publication date:: 08-10-2024
+Authors::
+mailto:bart.kleijngeld@alliander.com[Bart Kleijngeld] ({lnk-alliander}) +
+mailto:ritger.teunissen@alliander.com[Ritger Teunissen] ({lnk-alliander}) +
+****
+
+== Introduction
+
+This guide explains how documentation is written and maintained.
+
+== Observations
+First, check out these xref:observations.adoc[observations].
+
+== Terms and definitions
+
+include::ROOT::partial$term_defs.adoc[]
