@@ -1,0 +1,3 @@
+= Terms and definitions
+
+include::ROOT::partial$term_defs.adoc[]

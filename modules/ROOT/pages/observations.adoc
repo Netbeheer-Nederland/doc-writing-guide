@@ -1,4 +1,4 @@
-= Rules
+= Notes
 
 * All xrefs must use Antora's resource ID coordinate system in order to be guaranteed that the system functions properly.
 ** This means: no use of (relative) file paths.
@@ -12,6 +12,11 @@
 * When using the `asciidoctor-diagram` or `asciidoctor-kroki` extensions for writing diagrams, avoid using the custom macro.
 ** Prefer includes of partial files that contain the diagram code.
 ** Inline diagram code is also fine, but be mindful of readability and the ability to reuse.
+* It's encouraged to use `index.adoc` as the name of the start page document, since many default behaviors rely on this, making it less error-prone.
+* Asciidoctor documentation on AsciiDoc may trump the AsciiDoc one for us, since out focus is on HTML.
+** Note that this does not mean you're tightly coupling to HTML. You're still just using regular document and element attributes, but some of them are interpreted by Asciidoctor to meaningfully influence its processing.
+* Disabling `kroki-fetch-diagram` during local development makes everything a lot faster.
+** Especially when the service is down or slow, as seems to be the case regularly often.
 
 == PDF generation
 At some point we would like to convert (parts of) our documentation to PDF, ideally from a single source of AsciiDoc files.

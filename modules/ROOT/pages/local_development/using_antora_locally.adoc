@@ -1,0 +1,104 @@
+= Using Antora locally
+:fn-local-playbook-filename: footnote:[You could name this file something entirely different, but this is discouraged because it hinders interoperability with other software. One such example is the https://intellij-asciidoc-plugin.ahus1.de/[Asciidoctor IntelliJ] plugin, which looks for filenames that contain the words `antora` and `playbook` in them.]
+
+== Installation
+
+
+== Generating the site
+In order for Antora to be able to generate our website, it requires a playbook which instructs and configures it.
+
+=== Local playbook
+For local development it makes sense to create a dedicated playbook optimized for that workflow. Let's look at an example playbook file you could use.
+
+.Antora playbook file for local development
+[source,yaml]
+....
+site:
+  title: Documentation
+content:
+  sources:
+    - url: .
+      branches: HEAD
+      start_path: ./root_component
+    - url: ../doc-writing-guide/ <1>
+      branches: HEAD <2>
+asciidoc:
+  attributes:
+    kroki-fetch-diagram: false <3>
+    kroki-default-format: svg@
+  extensions:
+  - asciidoctor-kroki
+output:
+  clean: true
+  dir: ./docs
+urls:
+  latest_version_segment: latest
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./supplemental-ui
+antora:
+  extensions:
+  - require: '@antora/lunr-extension'
+
+....
+
+<1> Content sources URLs can point to local instead of remote Git repositories.
+<2> For ease of use you can configure to only gather content from the `HEAD` of the currently checked out branch.
+<3> Pre-fetching Kroki! diagrams can be disabled to vastly improve build speeds, and in the worst case prevent timeouts to the Kroki! server.
+
+Save this file to the repository root and name it `antora-playbook-local.yml`{fn-local-playbook-filename}.
+
+[IMPORTANT]
+Antora will not pick up on the playbook file if the file extension is not exactly `.yml`, so be careful to avoid the use of the commonplace `.yaml`  here.
+
+[WARNING]
+Make sure you don't check your local playbook file into the GitHub repository by adding it to the `.gitignore` file.
+
+=== Running Antora to generate the site
+With our playbook set up, we can now run Antora to generate the site.
+
+[source,shell]
+----
+$ npx antora antora-playbook-local.yml <1>
+Site generation complete! <2>
+Open file:///home/bart/Programming/Netbeheer-Nederland/docs/docs/index.html in a browser to view your site. <3>
+----
+
+<1> Run Antora using the local playbook file.
+<2> If all goes well, the command should output `Site generation complete`.
+<3> The location of the site's start page HTML file is echoed. You can open this file in your browser to view the site.
+
+Although viewing the website by opening the start page file works okay, a better idea is to serve the site through HTTP using a simple server.
+
+== Serving the site
+Now that the static HTML website has been outputted to the `docs/` directory, let's run the simple HTTP server `http-server` to serve the site locally.
+
+[source,shell]
+----
+$ npx http-server docs/ <1>
+Starting up http-server, serving docs/ <2>
+
+http-server version: 14.1.1
+
+http-server settings:
+CORS: disabled
+Cache: 3600 seconds
+Connection Timeout: 120 seconds
+Directory Listings: visible
+AutoIndex: visible
+Serve GZIP Files: false
+Serve Brotli Files: false
+Default File Extension: none
+
+Available on:
+  http://127.0.0.1:8080 <3>
+  http://192.168.2.29:8080
+Hit CTRL-C to stop the server <4>
+
+----
+<1> Run a local HTTP server from the `docs/` directory.
+<2> The server log shows it's running and echoes the location (`docs`) from which it serves content.
+<3> These are the URLs the server listens to, i.e. you can visit the website through these.
+<4> To stop the server, press kbd:[Ctrl+C].
