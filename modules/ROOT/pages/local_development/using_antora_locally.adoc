@@ -1,21 +1,41 @@
 = Using Antora locally
+:fn-git-client: footnote:[Many IDEs such as VS Code and those offered by IntelliJ ship with a built-in Git client. It might be a good idea to install the https://git-scm.com/downloads[official Git CLI client] as well, though.]
 :fn-local-playbook-filename: footnote:[You could name this file something entirely different, but this is discouraged because it hinders interoperability with other software. One such example is the https://intellij-asciidoc-plugin.ahus1.de/[Asciidoctor IntelliJ] plugin, which looks for filenames that contain the words `antora` and `playbook` in them.]
 
 == Installation
 
 === Prerequisites
-You need to have these installed:
+You need to have these installed and set up:
 
-* Node.js (version 16 or later)
-* Git
+* https://nodejs.org/en/download/[Node.js] (version 16 or later)
+* A Git client {fn-git-client}
+
+=== Clone the root documentation project Git repository
+Using whatever Git client you have at your disposal, use `git clone` to create a local Git repository of the xref::terms_and_defs.adoc#root-documentation-project[root documentation project].
+
+.Cloning with the official `git` CLI client
+====
+[source,shell]
+----
+$ git clone https://github.com/Netbeheer-Nederland/docs  <1>
+----
+<1> Clone the repository. In this example the HTTPS URL is used, but depending on your Git configuration you could also use the SSH URL.
+====
+
+[NOTE]
+All following instructions will assume your working directory is the repository root.
 
 === Installing dependencies
 All dependencies for running Antora are specified and stored in `package.json` and `package-lock.json` in the Git repository of the xref::terms_and_defs.adoc#root-documentation-project[root documentation project]. Installing these is straightforward using `npm`.
 
 [source,shell]
 ----
-$ npm i
+$ npm i <1>
 ----
+
+<1> Install all dependencies using NPM.
+
+'''
 
 Antora is now successfully installed.
 
@@ -26,8 +46,9 @@ In order for Antora to be able to generate our website, it requires a playbook w
 For local development it makes sense to create a dedicated playbook optimized for that workflow. Let's look at an example playbook file you could use.
 
 .Antora playbook file for local development
+====
 [source,yaml]
-....
+----
 site:
   title: Documentation
 content:
@@ -56,14 +77,14 @@ ui:
 antora:
   extensions:
   - require: '@antora/lunr-extension'
-
-....
+----
 
 <1> Content sources URLs can point to local instead of remote Git repositories.
 <2> For ease of use you can configure to only gather content from the `HEAD` of the currently checked out branch.
-<3> Pre-fetching Kroki! diagrams can be disabled to vastly improve build speeds, and in the worst case prevent timeouts to the Kroki! server.
+<3> Pre-fetching Kroki diagrams can be disabled to vastly improve build speeds, and in the worst case prevent timeouts to the Kroki server.
+====
 
-Save this file to the repository root and name it `antora-playbook-local.yml`{fn-local-playbook-filename}.
+Save the playbook file to the repository root and name it `antora-playbook-local.yml`{fn-local-playbook-filename}.
 
 [IMPORTANT]
 Antora will not pick up on the playbook file if the file extension is not exactly `.yml`, so be careful to avoid the use of the commonplace `.yaml`  here.

@@ -1,5 +1,5 @@
 * xref::index.adoc[Home]
 ** xref::introduction.adoc[]
-** xref::local_development/index.adoc[]
+** Local development
 *** xref::local_development/using_antora_locally.adoc[]
 ** xref::terms_and_defs.adoc[]
