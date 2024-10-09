@@ -1,0 +1,32 @@
+= Creating A New Documentation Project
+
+== Create a new Git repository
+
+=== Using the Git template repository
+
+To create a new xref::terms_and_defs.adoc#documentation-project[documentation project], the recommended and easiest way is to create a new Git repository using the documentation project template repository.
+
+.Instructions
+. Visit the https://github.com/Netbeheer-Nederland/tmpl-doc[template repository on GitHub] in your browser.
+. Click the _Use this template_ button located at the top right:
++
+--
+.Creating a new documentation project using the template repository
+image::image$use-git-template-repo-button.png[]
+--
++
+.
+
+=== From scratch
+If for whatever reason you prefer not to use the Git template repository, you can also create a documentation project manually.
+
+Detailed instructions won't be provided here, but to ensure you end up with an operational documentation project please take care of the following matters:
+
+* A Git repository has been created for the project.
+* An https://docs.antora.org/antora/latest/component-version/[Antora component version] is defined, its files residing in the repository root.
+** The https://docs.antora.org/antora/latest/component-version-descriptor/[component version descriptor file]: `antora.yml`.
+** The `modules/` directory.
+
+== Add the project as a content source to the root project
+In order for the project to become visible on the xref::terms_and_defs.adoc#documentation-website[documentation website] it needs
+With the Git repository initialized the proper way, we can now add it to

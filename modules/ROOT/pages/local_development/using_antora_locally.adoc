@@ -1,4 +1,4 @@
-= Using Antora locally
+= Using Antora Locally
 :fn-git-client: footnote:[Many IDEs such as VS Code and those offered by IntelliJ ship with a built-in Git client. It might be a good idea to install the https://git-scm.com/downloads[official Git CLI client] as well, though.]
 :fn-local-playbook-filename: footnote:[You could name this file something entirely different, but this is discouraged because it hinders interoperability with other software. One such example is the https://intellij-asciidoc-plugin.ahus1.de/[Asciidoctor IntelliJ] plugin, which looks for filenames that contain the words `antora` and `playbook` in them.]
 
@@ -24,7 +24,10 @@ $ npm i <1>
 
 '''
 
-Antora is now successfully installed.
+Antora should now be successfully installed.
+
+[TIP]
+The https://docs.antora.org/antora/latest[Antora documentation] sets a great example and is a great resource to consult. It also provides excellent https://docs.antora.org/antora/latest/install-and-run-quickstart[installation and running instructions.].
 
 == Generating the site
 In order for Antora to be able to generate our website, it requires a playbook which instructs and configures it.

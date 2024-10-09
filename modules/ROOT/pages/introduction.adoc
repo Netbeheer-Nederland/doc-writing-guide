@@ -1,7 +1,1 @@
 = Introduction
-
-This guide explains how documentation is written and maintained.
-Jump to xref::terms_and_defs.adoc#conceptual-model[conceptual model].
-
-== Observations
-First, check out these xref:observations.adoc[observations].
