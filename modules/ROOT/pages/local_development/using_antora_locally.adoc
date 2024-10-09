@@ -3,6 +3,21 @@
 
 == Installation
 
+=== Prerequisites
+You need to have these installed:
+
+* Node.js (version 16 or later)
+* Git
+
+=== Installing dependencies
+All dependencies for running Antora are specified and stored in `package.json` and `package-lock.json` in the Git repository of the xref::terms_and_defs.adoc#root-documentation-project[root documentation project]. Installing these is straightforward using `npm`.
+
+[source,shell]
+----
+$ npm i
+----
+
+Antora is now successfully installed.
 
 == Generating the site
 In order for Antora to be able to generate our website, it requires a playbook which instructs and configures it.
