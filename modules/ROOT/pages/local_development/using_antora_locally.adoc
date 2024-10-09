@@ -8,25 +8,12 @@
 You need to have these installed and set up:
 
 * https://nodejs.org/en/download/[Node.js] (version 16 or later)
-* A Git client {fn-git-client}
-
-=== Clone the root documentation project Git repository
-Using whatever Git client you have at your disposal, use `git clone` to create a local Git repository of the xref::terms_and_defs.adoc#root-documentation-project[root documentation project].
-
-.Cloning with the official `git` CLI client
-====
-[source,shell]
-----
-$ git clone https://github.com/Netbeheer-Nederland/docs  <1>
-----
-<1> Clone the repository. In this example the HTTPS URL is used, but depending on your Git configuration you could also use the SSH URL.
-====
 
 [NOTE]
-All following instructions will assume your working directory is the repository root.
+All following instructions will assume your working directory is the Git repository root of the xref::terms_and_defs.adoc#root-documentation-project[root documentation project].
 
 === Installing dependencies
-All dependencies for running Antora are specified and stored in `package.json` and `package-lock.json` in the Git repository of the xref::terms_and_defs.adoc#root-documentation-project[root documentation project]. Installing these is straightforward using `npm`.
+All dependencies for running Antora are specified and stored in `package.json` and `package-lock.json` . Installing these is straightforward using `npm`.
 
 [source,shell]
 ----
